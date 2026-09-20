@@ -54,9 +54,9 @@ if not OPENAI_API_KEY:
 # LLM
 # =========================
 
-llm = ChatGroq(
-    model="openai/gpt-oss-120b",
-    api_key=GROQ_API_KEY
+llm = ChatOpenAI(
+     model="gpt-5-mini", 
+     api_key=OPENAI_API_KEY 
 )
 
 
