@@ -1,7 +1,7 @@
 #FastAPI application
 from pathlib import Path
 import traceback
-import uvicorn
+import uvicorn  #helps to run application
 
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, JSONResponse
@@ -26,7 +26,7 @@ app.mount(
     name="static"
 )
 
-
+#Jinja2Templates HTML templates are inside the templates folder
 templates = Jinja2Templates(
     directory=str(BASE_DIR / "templates")
 )
@@ -62,7 +62,7 @@ async def travel_planner(request_data: TravelRequest):
                 }
             )
 
-        result = run_travel_agent(
+        result = run_travel_agent(  #   POST /api/travel -> travel_planner() ->request -> run_travel_agent ->  LangGraph
             user_input=user_message,
             thread_id=request_data.thread_id
         )
@@ -111,6 +111,6 @@ if __name__ == "__main__":
     uvicorn.run(
         "app:app",
         host="127.0.0.1",
-        port=8000,
+        port=8000,  #Start  FastAPI application using Uvicorn on port 8000. http://127.0.0.1:8000
         reload=True
     )
