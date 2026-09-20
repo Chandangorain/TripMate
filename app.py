@@ -19,7 +19,7 @@ app = FastAPI(  #fast api app
     version="1.0.0"
 )
 
-
+#mount means "attach a folder to a URL path."
 app.mount(
     "/static",
     StaticFiles(directory=str(BASE_DIR / "static")),
@@ -51,7 +51,7 @@ async def home(request: Request):
 @app.post("/api/travel")
 async def travel_planner(request_data: TravelRequest):
     try:
-        user_message = request_data.message.strip()
+        user_message = request_data.message.strip() #strip remove the spaced f user input
 
         if not user_message:
             return JSONResponse(
