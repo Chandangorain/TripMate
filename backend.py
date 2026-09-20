@@ -22,7 +22,8 @@ from langchain_core.messages import (
     AIMessage,
     SystemMessage,
 )
-from langchain_groq import ChatGroq
+#from langchain_groq import ChatGroq
+from langchain_openai import ChatOpenAI
 from tools.tavily_tool import tavily_search
 from tools.flight_tool import search_flights
 
@@ -42,9 +43,11 @@ def get_database_url():
     return database_url
 
 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-if not GROQ_API_KEY:
-    raise ValueError("GROQ_API_KEY is missing. Please add it to your .env file.")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+if not OPENAI_API_KEY: 
+    raise ValueError( 
+        "OPENAI_API_KEY is missing. Please add it to your .env file." 
+        )
 
 
 # =========================
